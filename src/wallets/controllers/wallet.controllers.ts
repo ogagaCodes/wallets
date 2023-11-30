@@ -36,7 +36,7 @@ export class WalletsController {
   }
 
   @Post('transfer')
-  transfer(@Param('id') id: string, @Body() walletTransferDto: WalletTransferDto) {
+  transfer(@Body() walletTransferDto: WalletTransferDto) {
     return this.walletsService.transfer(walletTransferDto);
   }
 }
