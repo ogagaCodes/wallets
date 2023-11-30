@@ -1,10 +1,10 @@
 import { IsDefined, IsString, IsNotEmpty, IsEmail, IsNumber, IsBoolean } from "class-validator";
 
-export class CreateWalletDto {
+export class FundWalletDto {
     @IsDefined()
     @IsNumber()
     @IsNotEmpty()
-    readonly id; 
+    readonly wallet_id;
 
     @IsDefined()
     @IsNumber()
@@ -13,10 +13,10 @@ export class CreateWalletDto {
 
     @IsDefined()
     @IsNumber()
-    readonly wallet_balance;
+    readonly amount;
 
     @IsDefined()
-    @IsBoolean()
-    readonly is_blocked;
+    @IsString()
+    readonly fund_channel;
 
 }
