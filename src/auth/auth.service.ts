@@ -22,8 +22,8 @@ export class AuthService {
     const user = await this.userService.create(signUp);
     const newWalletData : CreateWalletDto = {
       user_id: user.id,
-      wallet_balance : 0,
-      is_blocked: false
+      wallet_balance: 0,
+      is_blocked: false,
     }
     const wallet = await this.walletService.create(newWalletData)
     delete user.password;

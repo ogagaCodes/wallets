@@ -13,7 +13,8 @@ import {
     Body,
   } from '@nestjs/common';
 import { WalletsService } from '../services/wallet.services';
-import { UpdateWalletDto } from '../dto/update-wallet.dto';
+import { FundWalletDto } from '../dto/fund-wallet.dto';
+import { WalletTransferDto } from '../dto/wallet-transfer.dto';
 import { JWTAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { SessionAuthGuard } from 'src/auth/guards/session-auth.guard';
 import { Wallet } from '../entities/wallet.entity';
@@ -29,8 +30,13 @@ export class WalletsController {
     return this.walletsService.findOne({ where: { id } });
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWalletDto: UpdateWalletDto) {
-    return this.walletsService.update(+id, updateWalletDto);
+  @Post('fund')
+  fund(@Body() fundWalletDto: FundWalletDto) {
+    return this.walletsService.fund(fundWalletDto);
+  }
+
+  @Post('transfer')
+  transfer(@Param('id') id: string, @Body() walletTransferDto: WalletTransferDto) {
+    return this.walletsService.transfer(walletTransferDto);
   }
 }
